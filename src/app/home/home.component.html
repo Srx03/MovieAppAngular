@@ -1,1 +1,42 @@
-<div class="popular">Popular Movies</div>
+<div class="main-screen">
+<div class="popular-section col-12">Popular Movies</div>
+
+<div class="scroll-container">
+        <div *ngFor="let movie of popularMovieResponse.results">
+            
+                    <div class="popular-item">
+
+                        <img class="popular-img" [src]="imgRoot + movie.poster_path"/>
+                        <div class="title">{{ movie.title }}</div>
+
+                    </div>
+        </div>
+</div>
+
+<div class="other-section col-12">Recent Movie</div>
+<div class="scroll-container">
+    <div *ngFor="let movie of recentMovieResponse.results">
+        
+                <div class="other-item">
+
+                    <img class="other-img" [src]="imgRoot + movie.poster_path"/>
+                    <div class="title">{{ movie.title }}</div>
+
+                </div>
+    </div>
+</div>
+
+<div class="other-section col-12">Popular Tv Shows</div>
+<div class="scroll-container">
+    <div *ngFor="let tv of popularTvResponse.results">
+        
+                <div class="other-item">
+
+                    <img class="other-img" [src]="imgRoot + tv.poster_path"/>
+                    <div class="title">{{ tv.title }}</div>
+
+                </div>
+    </div>
+</div>
+</div>
+

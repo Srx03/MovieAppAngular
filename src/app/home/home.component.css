@@ -1,7 +1,65 @@
-.popular{
-    
+.main-screen{
+    background-color: black;
+}
+.scroll-container{
+    display: flex;
+    height: auto;
+    overflow-x: scroll;
+
+}
+
+.popular-section{
     font-family: 'Roboto', sans-serif;
     font-size: 50px;
     display: flex;
     justify-content: center;
+    font-weight: bolder;
+    color: white;
 }
+
+.popular-item{
+    width: auto;
+    text-align: center;
+    margin: 0 10px;
+
+}
+
+.popular-img{
+    width: 250px;
+    height: 320px;;
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    word-break: keep-all;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    margin: 0 5px;
+    margin-top: 5px;
+
+}
+
+.other-section{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    display: flex;
+    margin-left: 10px;
+    justify-content: start;
+    font-weight: bolder;
+    color: white;
+}
+
+.other-item{
+    width: auto;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.other-img{
+    width: 150px;
+    height: 220px;;
+    border-radius: 10px;
+    border: solid 5px gray;
+}
+

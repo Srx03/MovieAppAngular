@@ -1,6 +1,6 @@
-import { MovieResult } from "./movieResult.interface"
 
-export interface Movie {
+
+export interface RootResponse{
     page: number
     results: any[]
     total_pages: number
