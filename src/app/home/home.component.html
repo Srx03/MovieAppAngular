@@ -38,5 +38,35 @@
                 </div>
     </div>
 </div>
+
+<div class="other-section col-12">Top Rated Movies</div>
+<div class="scroll-container">
+    <div *ngFor="let movie of topRatedMovieResponse.results">
+        
+                <div class="other-item">
+
+                    <img class="other-img" [src]="imgRoot + movie.poster_path"/>
+                    <div class="title">{{ movie.title }}</div>
+
+                </div>
+    </div>
 </div>
+
+<div class="other-section col-12">Top Rated Tv Shows</div>
+<div class="scroll-container">
+    <div *ngFor="let tv of topRatedTvResponse.results">
+        
+                <div class="other-item">
+
+                    <img class="other-img" [src]="imgRoot + tv.poster_path"/>
+                    <div class="title">{{ tv.title }}</div>
+
+                </div>
+    </div>
+</div>
+
+
+</div>
+
+
 

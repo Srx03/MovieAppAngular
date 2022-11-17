@@ -41,6 +41,12 @@ export class MovieService {
           )
         }
 
+        getSearchedMovies(searchQuery: string): Observable<RootResponse>{
+          return this.http.get<RootResponse>(`https://api.themoviedb.org/3/search/movie?api_key=0d78a49b1a3056a1df36e1de7787fcda&query=${searchQuery}`).pipe(
+            map(this.filterMovieResponse)
+          )
+        }
+
 
     private filterMovieResponse(response: RootResponse): RootResponse{
       return {
