@@ -45,17 +45,15 @@
 .not-found{
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
-    font-size: 18px;
     color: white;
     margin: auto;
-    margin-top: 50%;
-    transition: 0.5;
+    margin-top: 100px;
     text-align: center;
 }
 
 .search-bar{
+    margin-top: 10px;
     width: 100%;
-    padding-top: 15px;
     height: 40px;
 }
 
@@ -65,6 +63,15 @@
     left: 25%; 
     position: relative;
     
+}
+
+.trending-search{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    color: white;
 }
 @media only screen and (max-width: 1000px) {
     .search-input {

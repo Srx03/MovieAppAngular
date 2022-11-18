@@ -47,6 +47,15 @@ export class MovieService {
           )
         }
 
+        getTrendingMovies(): Observable<RootResponse> {
+          return this.http.get<RootResponse>('https://api.themoviedb.org/3/trending/movie/week?api_key=0d78a49b1a3056a1df36e1de7787fcda').pipe(
+            map(this.filterMovieResponse)
+          )
+          }
+
+        
+
+       
 
     private filterMovieResponse(response: RootResponse): RootResponse{
       return {
