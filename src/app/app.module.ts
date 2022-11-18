@@ -10,6 +10,8 @@ import { SearchComponent } from './search/search.component'
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     AppComponent,
     HomeComponent,
     ShowComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

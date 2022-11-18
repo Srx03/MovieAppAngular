@@ -23,10 +23,8 @@ export class SearchComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    
+  
   this.trendingMovies();
-
-
   }
 
   onSearchedTextChanged(){
@@ -43,17 +41,13 @@ export class SearchComponent implements OnInit {
             this.notFound = false;
             this.searchedResponse = res;
           }
-      
       }
       )
-
     }else{
       this.presentingSearch = "Presenting Trending Movies";
       this.searchQueryEmpty = true;
       this.trendingMovies();
     }
-  
-
   }
 
   trendingMovies(){
@@ -63,7 +57,6 @@ export class SearchComponent implements OnInit {
     }
   )
   }
-
 
   }
 

@@ -1,1 +1,68 @@
-<p>show works!</p>
+  <div class="show-screen">
+
+    <img class="poster-path" [src]="imgRoot + movieDetail.backdrop_path">
+    <div class="data-container">
+        <div class="row">
+            <div class="title col-4">{{ movieDetail.title }}</div>    
+          <div class="col-8">
+            <img class="icon-add" src ="../assets/plus.png">
+          </div>
+        </div>
+        <div class="row">
+            <div class="genres">
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            
+                <img src="../assets/calendar.png" class="date-icon col-1">
+                <div class="date-text col-3">
+                    {{ movieDetail.release_date | date: 'mediumDate' }}
+                </div>
+            
+            
+                <img src ="../assets/star.png" class="date-icon col-1">
+                <div class="date-text col-3">
+                    {{ movieDetail.vote_average | number: '0.0-1'}}
+                </div>
+            
+        </div>
+        <div class="overview">{{ movieDetail.overview }}</div>
+
+        <div class="title-define">Top Cast</div>
+
+        <div class="scroll-container">
+            <div *ngFor="let actors of movieCredits.cast">
+                
+                        <div class="other-item">
+        
+                            <img class="actor-img" [src]="imgRoot + actors.profile_path"/>
+                            <div class="name">{{ actors.name}}</div>
+                            <div class="character">{{ actors.character}}</div>
+        
+                        </div>
+            </div>
+
+    
+        </div>
+
+        <div class="title-define">Similar</div>
+
+        <div class="scroll-container">
+            <div *ngFor="let movie of similarMovies.results">
+            
+                        <div class="other-item">
+        
+                            <img class="actor-img" [src]="imgRoot + movie.poster_path"/>
+                            <div class="name">{{ movie.title }}</div>
+        
+                        </div>
+            </div>
+        </div>
+
+    </div>
+
+
+  </div>
