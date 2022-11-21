@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RootResponse } from '../interface/RootResponse.interface';
 import { MovieService } from '../service/movie.service';
 
@@ -43,11 +43,15 @@ export class SearchComponent implements OnInit {
           }
       }
       )
+
+
+
     }else{
       this.presentingSearch = "Presenting Trending Movies";
       this.searchQueryEmpty = true;
       this.trendingMovies();
     }
+
   }
 
   trendingMovies(){

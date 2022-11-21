@@ -7,11 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { ShowComponent } from './show/show.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material/tabs';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MaterialModule } from '../material.module';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -29,7 +31,12 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MaterialModule,
     MatTabsModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

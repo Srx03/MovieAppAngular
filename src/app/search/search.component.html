@@ -1,42 +1,50 @@
  <div class="search-screen">
 
-    <div class="search-container">
+  
 
         <div class="search-bar">
-            <input type="text" [(ngModel)]="searchQuery" (input)=" onSearchedTextChanged()" placeholder="Search" class="search-input">
+            <input type="text" [(ngModel)]="searchQuery"  (input)=" onSearchedTextChanged()" placeholder="Search" class="search-input">
         </div>
 
         <div class="trending-search">
             {{ presentingSearch }}
         </div>
 
+
         <div *ngIf="!notFound && !searchQueryEmpty" class="searched-component">
-           <div *ngFor="let movie of searchedResponse.results">
-                <div class="searched-item">
-                    <img class="searched-img" [src]="imgRoot + movie.poster_path"/>
-                    <div class="title">{{ movie.title }}</div>
-                </div>
-            </div>
-        </div>
+            <div *ngFor="let movie of searchedResponse.results">
+                 <div class="searched-item">
+                     <img class="searched-img" [src]="imgRoot + movie.poster_path"/>
+                     <div class="title">{{ movie.title }}</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <div *ngIf="notFound" class="not-found">Sorry can't find that result.</div>
+ 
+         <div *ngIf="searchQueryEmpty" class="searched-component">
+             <div *ngFor="let movie of trendingMovie.results">
+                 <div class="searched-item" [routerLink]="['/show/','movie', movie.id]">
+                     <img class="searched-img" [src]="imgRoot + movie.poster_path"/>
+                     <div class="title">{{ movie.title }}</div>
+                 </div>
+             </div>
+         </div>
 
-        <div *ngIf="notFound" class="not-found">Sorry can't find that result.</div>
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+            <mat-tab label="Firstaaa">
 
-        <div *ngIf="searchQueryEmpty" class="searched-component">
-            <div *ngFor="let movie of trendingMovie.results">
-                <div class="searched-item" [routerLink]="['/show', movie.id]">
-                    <img class="searched-img" [src]="imgRoot + movie.poster_path"/>
-                    <div class="title">{{ movie.title }}</div>
-                </div>
-            </div>
+        
+         
 
-
-        </div>
-    
-
-
-    </div>
-
+            </mat-tab>
+            <mat-tab label="Second">Content 2</mat-tab>
+            <mat-tab label="Third">Content 3</mat-tab>
+          </mat-tab-group>
+        
 
 
 
 </div> 
+
+

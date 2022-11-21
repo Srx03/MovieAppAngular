@@ -75,6 +75,23 @@ export class MovieService {
                 }
 
           
+                getTvDetail(id: number): Observable<MoiveDetail> {
+                  return this.http.get<MoiveDetail>(`https://api.themoviedb.org/3/tv/${id}?api_key=0d78a49b1a3056a1df36e1de7787fcda`).pipe(
+                    map(this.filterTvDetail)
+                  )
+                  }
+      
+                  getTvCredits(id: number): Observable<MovieCredits> {
+                    return this.http.get<MovieCredits>(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=0d78a49b1a3056a1df36e1de7787fcda`).pipe(
+                     map(this.filterMovieCredits)
+                    )
+                    }
+      
+                    getSimilarTvs(id: number): Observable<RootResponse> {
+                      return this.http.get<RootResponse>(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=0d78a49b1a3056a1df36e1de7787fcda`).pipe(
+                       map(this.filterTvResponse)
+                      )
+                      }
 
         
 
@@ -125,6 +142,7 @@ export class MovieService {
 
 private filterMovieDetail(response: MoiveDetail): MoiveDetail{
   return {
+
     backdrop_path: response.backdrop_path,
     genres: response.genres,
     id: response.id,
@@ -132,6 +150,22 @@ private filterMovieDetail(response: MoiveDetail): MoiveDetail{
     poster_path: response.poster_path,
     release_date: response.release_date,
     title: response.title,
+    vote_average: response.vote_average    
+  };
+
+
+}
+
+private filterTvDetail(response: any): MoiveDetail{
+  return {
+
+    backdrop_path: response.backdrop_path,
+    genres: response.genres,
+    id: response.id,
+    overview: response.overview,
+    poster_path: response.poster_path,
+    release_date: response. first_air_date,
+    title: response.name,
     vote_average: response.vote_average    
   };
 

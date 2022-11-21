@@ -6,7 +6,7 @@ import { ShowComponent } from './show/show.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'show/:id', component: ShowComponent},
+  {path: 'show/:type/:id', component: ShowComponent},
   {path: 'search', component: SearchComponent},
   {path: '**', redirectTo: 'home'}
 
