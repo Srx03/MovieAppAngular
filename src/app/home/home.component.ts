@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MoiveDetail } from '../interface/MovieDetail.interface';
 import { RootResponse } from '../interface/RootResponse.interface';
 import { MovieService } from '../service/movie.service';
 
@@ -22,11 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.movieService.getTvDetail(14564).subscribe(
-      (results: MoiveDetail) =>{
-        console.log(results);
-       }
-    )
+  
 
     this.movieService.getPopularMovies().subscribe(
       (results: RootResponse) =>{

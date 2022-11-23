@@ -14,6 +14,14 @@ import { RegisterComponent } from './register/register.component';
 import { MaterialModule } from '../material.module';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
+import { AngularFireModule } from '@angular/fire/compat'
+import { HotToastModule } from '@ngneat/hot-toast';
+import { environment } from 'src/environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 
 
 @NgModule({
@@ -34,11 +42,19 @@ import {MatTabsModule} from '@angular/material/tabs';
     ReactiveFormsModule,
     MatNativeDateModule,
     MaterialModule,
-    MatTabsModule
+    MatTabsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    HotToastModule.forRoot(),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    
+    
 
 
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

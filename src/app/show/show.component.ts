@@ -42,9 +42,7 @@ export class ShowComponent implements OnInit {
           console.log('this is genre',genreInResponse.name);
           this.genre.push.apply(genreInResponse.name)
         }
-  
         console.log('this is genre',this.genre);
-  
       })
     }else{
       this.movieService.getTvDetail(this.movieId).subscribe(movieDetailResponse => {
@@ -54,16 +52,13 @@ export class ShowComponent implements OnInit {
           console.log('this is genre',genreInResponse.name);
           this.genre.push.apply(genreInResponse.name)
         }
-  
         console.log('this is genre',this.genre);
-  
       })
     }
-   
   }
+
   getMovieCredits(){
     if( this.type === 'movie'){
-
       this.movieService.getMovieCredits(this.movieId).subscribe(movieCreditsResponse =>{
         this.movieCredits = movieCreditsResponse
       })
