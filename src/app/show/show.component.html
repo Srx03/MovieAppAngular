@@ -17,14 +17,14 @@
         <div class="row">
 
             
-                <img src="../assets/calendar.png" class="date-icon col-1">
-                <div class="date-text col-3">
+                <img src="../assets/calendar.png" class="date-icon">
+                <div class="date-text col-2">
                     {{ movieDetail.release_date | date: 'mediumDate' }}
                 </div>
             
             
-                <img src ="../assets/star.png" class="date-icon col-1">
-                <div class="date-text col-3">
+                <img src ="../assets/star.png" class="date-icon ">
+                <div class="date-text col-2">
                     {{ movieDetail.vote_average | number: '0.0-1'}}
                 </div>
             

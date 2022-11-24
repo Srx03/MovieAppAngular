@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  requiredHelper: boolean = false;
+
       get email() {
         return this.loginForm.get('email');
       }
@@ -38,9 +40,10 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     if (!this.loginForm.valid || !email || !password) {
+      this.requiredHelper = true;
       return;
     }
-
+    this.requiredHelper = false;
     this.authService
       .login(email, password)
       .pipe(

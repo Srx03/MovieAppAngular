@@ -1,23 +1,36 @@
-<div class="form-container mat-elevation-z5">
-  <h1>Login</h1>
+<div class="form-container">
+  <div class="wellcome">Welcome to</div>
+  <div class="wellcome-t">SrxMovie</div>
   <form [formGroup]="loginForm" (ngSubmit)="submit()">
-    <mat-form-field>
-      <input matInput placeholder="Email address" formControlName="email" />
-      <mat-error *ngIf="email?.errors?.['required']">
-        Email address is required
-      </mat-error>
-      <mat-error *ngIf="email?.errors?.['email']">
-        Please enter a valid email address
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" placeholder="Password" formControlName="password" />
-      <mat-error *ngIf="password?.errors?.['required']">
-        Password is required
-      </mat-error>
-    </mat-form-field>
-    <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+    <div class="input-container">
+      <input class="input-field" placeholder="Email address" formControlName="email" />
+      
+      <div *ngIf="requiredHelper">
+      
+          <div class="required-content" *ngIf="email?.errors?.['required']">
+            Email address is required
+          </div >
+          <div class="required-content"  *ngIf="email?.errors?.['email']">
+            Please enter a valid email address
+          </div>
+
+    </div>
+
+    </div>
+    <div class="input-container">
+           <input  type="password"  class="input-field" placeholder="Password" formControlName="password" />
+
+      <div *ngIf="requiredHelper">
+
+          <div class="required-content"  *ngIf="password?.errors?.['required']">
+            Password is required
+          </div >
+    </div>
+
+    </div>
+    <div class="button-click-login">
+        <button type="submit" class="login-button">Login</button>
     </div>
   </form>
+  <div class="to-register">You don't have account? Register</div>
 </div>
