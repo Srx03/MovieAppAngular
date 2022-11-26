@@ -4,6 +4,7 @@ import { MovieService } from '../service/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { MovieCredits } from '../interface/MovieCredits.interface';
 import { RootResponse } from '../interface/RootResponse.interface';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-show',
@@ -21,7 +22,7 @@ export class ShowComponent implements OnInit {
   similarMovies: RootResponse;
   isMovie: boolean;
   
-  constructor(private movieService: MovieService, private route: ActivatedRoute) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private toast: HotToastService) { }
 
   ngOnInit(): void {
     this.movieId = this.route.snapshot.params['id'];
@@ -43,7 +44,13 @@ export class ShowComponent implements OnInit {
           this.genre.push.apply(genreInResponse.name)
         }
         console.log('this is genre',this.genre);
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      )
     }else{
       this.movieService.getTvDetail(this.movieId).subscribe(movieDetailResponse => {
         this.movieDetail = movieDetailResponse;
@@ -53,7 +60,13 @@ export class ShowComponent implements OnInit {
           this.genre.push.apply(genreInResponse.name)
         }
         console.log('this is genre',this.genre);
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      )
     }
   }
 
@@ -61,11 +74,24 @@ export class ShowComponent implements OnInit {
     if( this.type === 'movie'){
       this.movieService.getMovieCredits(this.movieId).subscribe(movieCreditsResponse =>{
         this.movieCredits = movieCreditsResponse
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      
+      )
     }else{
       this.movieService.getTvCredits(this.movieId).subscribe(movieCreditsResponse =>{
         this.movieCredits = movieCreditsResponse
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      )
     }
  }
 
@@ -73,11 +99,23 @@ export class ShowComponent implements OnInit {
     if( this.type === 'movie'){
       this.movieService.getSimilarMovies(this.movieId).subscribe(similarMovie =>{
         this.similarMovies = similarMovie;
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      )
     }else{
       this.movieService.getSimilarTvs(this.movieId).subscribe(similarMovie =>{
         this.similarMovies = similarMovie;
-      })
+      },
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
+      )
     }
   }
 

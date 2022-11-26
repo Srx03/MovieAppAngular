@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RootResponse } from '../interface/RootResponse.interface';
 import { MovieService } from '../service/movie.service';
+import { HotToastService } from '@ngneat/hot-toast';
 
 
 
@@ -20,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   imgRoot: string = "https://image.tmdb.org/t/p/w500/";
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,  private toast: HotToastService,) { }
 
   ngOnInit(): void {
   
@@ -41,7 +42,13 @@ export class SearchComponent implements OnInit {
             this.notFound = false;
             this.searchedResponse = res;
           }
-      }
+      },
+      
+      (error: any)  =>{
+        this.toast.error(error.name);
+   
+       }
+   
       )
 
 
@@ -58,7 +65,12 @@ export class SearchComponent implements OnInit {
     this.movieService.getTrendingMovies().subscribe(
     res =>{
         this.trendingMovie = res;      
-    }
+    },
+    (error: any)  =>{
+      this.toast.error(error.name);
+ 
+     }
+ 
   )
   }
 

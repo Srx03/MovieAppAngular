@@ -22,22 +22,50 @@
 
 
 .form-container{
-  width: 50%;
+  width: 30%;
   height: auto;
-  left: 25%; 
+  left: 35%; 
   position: absolute;
   background-color: rgb(230, 230, 230);
- margin-top: 20%;
+ margin-top: 10%;
  border-radius: 20px;
 }
 
 
-
-
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1500px) {
   .form-container {
-      width: 80%;
-      left: 10%; 
+      width: 40%;
+      left: 30%; 
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .form-container {
+      width: 50%;
+      left: 25%; 
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .form-container {
+      width: 60%;
+      left: 20%; 
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+      width: 70%;
+      left: 15%; 
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .form-container {
+      width: 90%;
+      left: 5%; 
+      margin-top: 50%;
   }
 }
 
