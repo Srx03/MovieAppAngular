@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   imgRoot: string = "https://image.tmdb.org/t/p/w500/";
 
-  constructor(private movieService: MovieService,  private toast: HotToastService,) { }
+  constructor(private movieService: MovieService,  private toast: HotToastService) { }
 
   ngOnInit(): void {
   
