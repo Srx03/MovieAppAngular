@@ -1,5 +1,7 @@
 # MovieAppAngular
 
+Small app for movie and tv series presentation created with Angular. The design, APIs and firebase are the same as for the Movie App https://github.com/Srx03/MovieApp
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
 
 ## Development server
