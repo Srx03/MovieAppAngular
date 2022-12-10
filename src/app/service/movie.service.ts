@@ -123,6 +123,22 @@ export class MovieService {
                       )
                       }
 
+                      getTrendingTv(): Observable<RootResponse> {
+                        return this.http.get<RootResponse>('https://api.themoviedb.org/3/trending/tv/week?api_key=0d78a49b1a3056a1df36e1de7787fcda').pipe(
+                          map(this.filterTvResponse),
+                          catchError(error => 
+                            throwError(error))
+                        )
+                        }
+
+                        getSearchedTvs(searchQuery: string): Observable<RootResponse>{
+                          return this.http.get<RootResponse>(`https://api.themoviedb.org/3/search/tv?api_key=0d78a49b1a3056a1df36e1de7787fcda&query=${searchQuery}`).pipe(
+                            map(this.filterTvResponse),
+                            catchError(error => 
+                              throwError(error))
+                          )
+                        }
+
         
 
        

@@ -10,9 +10,18 @@
             {{ presentingSearch }}
         </div>
 
+        <div class="select">
 
+            <div class="tab-select-movie" (click)="onMovieTabClick()"> MOVIES </div>
+            <div class="tab-select-tv" (click)="onTvTabClick()"> TV </div>
+            <div class="tab-select-actor" (click)="onActorTabClick()"> ACTOR </div>
+
+        </div>
+
+    <!-- movie -->
+    <div *ngIf="movieTab">
         <div *ngIf="!notFound && !searchQueryEmpty" class="searched-component">
-            <div *ngFor="let movie of searchedResponse.results">
+            <div *ngFor="let movie of searchedResponseMovie.results">
                  <div class="searched-item">
                      <img class="searched-img" [src]="imgRoot + movie.poster_path"/>
                      <div class="title">{{ movie.title }}</div>
@@ -31,9 +40,37 @@
              </div>
          </div>
 
+    </div>
+
+    <!-- tv  -->
+    <div *ngIf="tvTab">
+        <div *ngIf="!notFound && !searchQueryEmpty" class="searched-component">
+            <div *ngFor="let tv of searchedResponseTv.results">
+                 <div class="searched-item">
+                     <img class="searched-img" [src]="imgRoot + tv.poster_path"/>
+                     <div class="title">{{ tv.title }}</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <div *ngIf="notFound" class="not-found">Sorry can't find that result.</div>
+ 
+         <div *ngIf="searchQueryEmpty" class="searched-component">
+             <div *ngFor="let tv of trendingTv.results">
+                 <div class="searched-item" [routerLink]="['/show/','tv', tv.id]">
+                     <img class="searched-img" [src]="imgRoot + tv.poster_path"/>
+                     <div class="title">{{ tv.title }}</div>
+                 </div>
+             </div>
+         </div>
+
+    </div>
+
+    <!-- actor -->
 
 
 
+    
 </div> 
 
 
