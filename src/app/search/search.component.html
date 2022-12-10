@@ -68,6 +68,28 @@
 
     <!-- actor -->
 
+    <div *ngIf="actorTab">
+        <div *ngIf="!notFound && !searchQueryEmpty" class="searched-component">
+            <div *ngFor="let actor of searchedResponseActor.results">
+                 <div class="searched-item">
+                     <img class="searched-img" [src]="imgRoot + actor.profile_path"/>
+                     <div class="title">{{ actor.name }}</div>
+                 </div>
+             </div>
+         </div>
+ 
+         <div *ngIf="notFound" class="not-found">Sorry can't find that result.</div>
+ 
+         <div *ngIf="searchQueryEmpty" class="searched-component">
+             <div *ngFor="let actor of trendingActor.results">
+                 <div class="searched-item">
+                     <img class="searched-img" [src]="imgRoot + actor.profile_path"/>
+                     <div class="title">{{ actor.name }}</div>
+                 </div>
+             </div>
+         </div>
+
+    </div>
 
 
     

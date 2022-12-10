@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RootResponse } from '../interface/RootResponse.interface';
 import { MovieService } from '../service/movie.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { ActorResponse } from '../interface/actor-response';
 
 
 
@@ -16,11 +17,14 @@ export class SearchComponent implements OnInit {
   notFound: boolean = false;
   searchedResponseMovie: RootResponse;
   searchedResponseTv: RootResponse;
-  searchedResponseActor: RootResponse;
+  searchedResponseActor: ActorResponse;
+
   searchQueryEmpty: boolean = true;
+  
   trendingMovie: RootResponse;
   trendingTv: RootResponse;
-  presentingSearch: string = "Presenting Trending Movies";
+  trendingActor: ActorResponse;
+  presentingSearch: string = "Presenting Trending";
   movieTab: boolean = true;
   tvTab: boolean = false;
   actorTab: boolean = false;
@@ -33,6 +37,7 @@ export class SearchComponent implements OnInit {
 
   this.trendingMovies();
   this.trendingTvs();
+  this.trendingActors();
   this.onMovieTabClick();
   }
 
@@ -58,6 +63,7 @@ export class SearchComponent implements OnInit {
     this.movieTab = false;
     this.tvTab = false;
     this.actorTab = true;
+    this.onSearchedTextChanged()
   }
 
 
@@ -71,6 +77,10 @@ export class SearchComponent implements OnInit {
       if(this.tvTab){
         this.searchedTvs();
       }
+
+      if(this.actorTab){
+        this.searchedActors();
+      }
     
     }else{
       this.emptySearchQuery()
@@ -81,6 +91,11 @@ export class SearchComponent implements OnInit {
       if(this.tvTab){
         this.trendingTvs();
       }
+
+      if(this.actorTab){
+        this.trendingActors();
+      }
+
     }
 
   }
@@ -111,11 +126,25 @@ export class SearchComponent implements OnInit {
   )
   }
 
+  trendingActors(){
+    this.movieService.getTrendingActor().subscribe(
+    res =>{
+     
+        this.trendingActor = res;      
+    },
+    (error: any)  =>{
+      this.toast.error(error.name);
+ 
+     }
+ 
+  )
+  }
+
 
   searchedMovies(){
     
     this.searchQueryEmpty = false;
-    this.presentingSearch = "Presenting You Search";
+    this.presentingSearch = "Presenting Your Search";
     this.movieService.getSearchedMovies(this.searchQuery).subscribe(
       res => {
         console.log("Respone is",res)
@@ -140,7 +169,7 @@ export class SearchComponent implements OnInit {
   searchedTvs(){
     
     this.searchQueryEmpty = false;
-    this.presentingSearch = "Presenting You Search";
+    this.presentingSearch = "Presenting Your Search";
     this.movieService.getSearchedTvs(this.searchQuery).subscribe(
       res => {
         console.log("Respone is",res)
@@ -161,8 +190,33 @@ export class SearchComponent implements OnInit {
     )
   }
 
+  searchedActors(){
+    
+    this.searchQueryEmpty = false;
+    this.presentingSearch = "Presenting Your Search";
+    this.movieService.getSearchedActors(this.searchQuery).subscribe(
+      res => {
+        console.log("Respone ACTOR is",res)
+        if(res.results.length === 0){
+          this.notFound = true; 
+        }
+        else{
+          this.notFound = false;
+          this.searchedResponseActor = res;
+        }
+    },
+    
+    (error: any)  =>{
+      this.toast.error(error.name);
+
+    }
+
+    )
+  }
+
+
   emptySearchQuery(){
-    this.presentingSearch = "Presenting Trending Movies";
+    this.presentingSearch = "Presenting Trending";
     this.searchQueryEmpty = true;
     this.notFound = false;
   }

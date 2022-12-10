@@ -6,6 +6,8 @@ import { MovieResult } from '../interface/MovieResult.interface';
 import { MoiveDetail } from '../interface/MovieDetail.interface';
 import { MovieCredits } from '../interface/MovieCredits.interface';
 import { Cast } from '../interface/Cast.interface';
+import { ActorResponse } from '../interface/actor-response';
+import { ActorResults } from '../interface/ActorResults';
 
 @Injectable({
   providedIn: 'root'
@@ -139,6 +141,23 @@ export class MovieService {
                           )
                         }
 
+
+                        getTrendingActor(): Observable<ActorResponse> {
+                          return this.http.get<ActorResponse>('https://api.themoviedb.org/3/trending/person/week?api_key=0d78a49b1a3056a1df36e1de7787fcda').pipe(
+                            map(this.filterActorResponse),
+                            catchError(error => 
+                              throwError(error))
+                          )
+                          }
+  
+                          getSearchedActors(searchQuery: string): Observable<ActorResponse>{
+                            return this.http.get<ActorResponse>(`https://api.themoviedb.org/3/search/person?api_key=0d78a49b1a3056a1df36e1de7787fcda&query=${searchQuery}`).pipe(
+                              map(this.filterActorResponse),
+                              catchError(error => 
+                                throwError(error))
+                            )
+                          }
+  
         
 
        
@@ -183,6 +202,23 @@ export class MovieService {
     };
 
   
+}
+
+
+private filterActorResponse(response: ActorResponse): ActorResponse{
+  return {
+    page: response.page,
+    results: response.results.map((actorResult: any) =>(<ActorResults>{
+      id: actorResult.id,
+      name: actorResult.name,
+      profile_path: actorResult.profile_path
+
+    })),
+    total_results: response.total_results,
+    total_pages: response.total_pages
+  };
+
+
 }
 
 
